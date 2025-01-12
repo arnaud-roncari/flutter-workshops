@@ -1,5 +1,7 @@
+import 'package:cookie_clicker/bloc/core_bloc.dart';
 import 'package:cookie_clicker/page/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: BlocProvider(
+        create: (context) => CoreBloc(),
+        child: const HomePage(),
+      ),
     );
   }
 }
